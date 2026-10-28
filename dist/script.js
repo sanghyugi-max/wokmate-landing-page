@@ -33,7 +33,7 @@
     if (![x,y,width,height,sourceWidth].every(Number.isFinite) || width <= 0 || height <= 0) return '';
     return `<div class="model-photo-crop" style="aspect-ratio:${width}/${height}"><img src="${e(url)}" alt="${e(m.alt)}" loading="lazy" style="width:${sourceWidth/width*100}%;left:${-x/width*100}%;top:${-y/height*100}%"></div>`;
   };
-  const modelCards = () => c.specs.models?.length ? '<div class="grid three model-grid">' + c.specs.models.map(m => `<article class="model-card">${modelPhoto(m)}<div class="model-body"><span class="ordinal">${e(m.code)}</span><h3>${e(m.name)}</h3><dl>${['size','gas','power','weight'].map(k => `<div><dt>${e(c.specs.modelLabels[k])}</dt><dd>${e(m[k])}</dd></div>`).join('')}</dl></div></article>`).join('') + '</div>' : '';
+function modelCards(){return c.specs.models?.length ? '<div class="grid two model-grid">'+c.specs.models.map(m=>'<article class="model-card"><figure class="model-figure"><div class="model-visual">'+modelPhoto(m)+'</div><figcaption>'+e(m.caption)+'</figcaption></figure><div class="model-body"><span class="ordinal">'+e(m.code)+'</span><h3>'+e(m.name)+'</h3><p class="model-description">'+e(m.description)+'</p><dl>'+Object.keys(c.specs.modelLabels).map(k=>'<div><dt>'+e(c.specs.modelLabels[k])+'</dt><dd>'+e(m[k])+'</dd></div>').join('')+'</dl><p class="model-note">'+e(m.note)+'</p></div></article>').join('')+'</div>' : '';}
   document.title = c.meta.title;
   document.querySelector('meta[name="description"]').content = c.meta.description;
   app.innerHTML = `

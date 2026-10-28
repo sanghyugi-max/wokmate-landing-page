@@ -1,4 +1,4 @@
-/* 웍메이트 문구·영상·상담·사양은 이 파일에서 수정합니다. README.md를 참고하세요. */
+/* 주요 문구와 사양은 이 설정에서 수정합니다. */
 window.COOKMATE_CONFIG = {
   "meta": {
     "title": "웍메이트 | 쿡메이트 볶음 조리 솔루션",
@@ -13,7 +13,7 @@ window.COOKMATE_CONFIG = {
   },
   "draft": {
     "show": true,
-    "text": "웍메이트 제작 시안 · 제품 영상과 모델별 상세 정보 준비 중"
+    "text": "웍메이트 제작 시안 · 실제 사용 사례 준비 중"
   },
   "navigation": [
     {
@@ -35,7 +35,7 @@ window.COOKMATE_CONFIG = {
   ],
   "buttons": {
     "consult": "카카오톡 상담",
-    "watch": "제품 영상 안내",
+    "watch": "작동 영상 보기",
     "phone": "전화 상담",
     "skip": "본문 바로가기",
     "backTop": "맨 위로",
@@ -60,11 +60,11 @@ window.COOKMATE_CONFIG = {
     ],
     "mediaLabel": "WOKMATE / PRODUCT FILM",
     "mediaTitle": "볶는 일은 더 간결하게,\n주방의 흐름은 여유롭게.",
-    "mediaNote": "실제 작동 영상은 준비되는 대로 이곳에서 확인하실 수 있습니다."
+    "mediaNote": "웍메이트의 실제 작동 모습을 영상으로 확인하세요."
   },
   "video": {
-    "type": "mp4",
-    "src": "",
+    "type": "youtube",
+    "src": "https://youtu.be/Aapal3gIbYk?si=jJ2Sidr_VbFbXQr7",
     "poster": "",
     "captions": "",
     "captionsLabel": "한국어 자막",
@@ -194,45 +194,97 @@ window.COOKMATE_CONFIG = {
   },
   "specs": {
     "eyebrow": "06 / 제품 사양",
-    "title": "도입 전, 꼼꼼하게 확인하세요.",
-    "intro": "웍메이트의 상세 사양은 확인 후 안내합니다. 상담 시 사용 메뉴와 1회 조리량, 설치 공간을 알려주세요.",
+    "title": "우리 매장의 조리량에 맞게,\n두 가지 웍메이트.",
+    "intro": "소량의 한식 볶음부터 대량의 중식 조리까지. 조리량과 사용하는 화구를 기준으로 모델을 선택하세요.",
     "modelLabels": {
-      "size": "크기 (W × D × H)",
-      "gas": "가스 소비량",
+      "capacity": "권장 조리량",
+      "size": "본체 크기 (W × D × H)",
+      "wok": "전용 웍",
       "power": "전압 / 전력",
-      "weight": "중량"
+      "installation": "장착 방식",
+      "gas": "본체 가스 소비량"
     },
-    "models": [],
+    "models": [
+      {
+        "name": "웍메이트 450",
+        "code": "WOK450",
+        "image": "assets/wokmate-450-source.png",
+        "photoCrop": {
+          "x": 160,
+          "y": 305,
+          "width": 345,
+          "height": 570,
+          "sourceWidth": 1500
+        },
+        "alt": "웍메이트 450과 쿡메이트 직화렌지 장착 사진",
+        "caption": "쿡메이트 직화렌지(CMR500) 장착 모습",
+        "description": "한식 볶음과 소량 메뉴 조리에",
+        "capacity": "약 1~4인분",
+        "size": "450 × 600 × 250 mm",
+        "wok": "지름 30 cm · 깊이 15 cm",
+        "power": "220 V, 50/60 Hz, 60 W",
+        "installation": "쿡메이트 직화렌지(CMR500)에 장착",
+        "gas": "해당 없음 · 조리 열원은 장착 화구 사용",
+        "note": "제육·쭈꾸미·낙지·곱창볶음 등 한식 볶음과 베트남·태국요리, 퓨전 중식에 활용합니다."
+      },
+      {
+        "name": "웍메이트 600",
+        "code": "WOK600",
+        "image": "assets/wokmate-600-source.png",
+        "photoCrop": {
+          "x": 35,
+          "y": 310,
+          "width": 477,
+          "height": 352,
+          "sourceWidth": 1500
+        },
+        "alt": "기존 중식 화구에 장착한 웍메이트 600",
+        "caption": "기존 중식 화구 장착 모습",
+        "description": "중식 전용, 한 번에 넉넉한 조리에",
+        "capacity": "약 10~15인분",
+        "size": "600 × 700 × 350 mm",
+        "wok": "지름 40 cm · 깊이 18 cm",
+        "power": "220 V, 50/60 Hz, 60 W",
+        "installation": "기존 중식 전용 화구에 장착",
+        "gas": "해당 없음 · 조리 열원은 장착 화구 사용",
+        "note": "대부분의 중식 화구에 장착할 수 있습니다. 기존 화구의 규격과 구조에 따라 설치 방법 또는 추가 부품이 달라질 수 있습니다."
+      }
+    ],
     "rows": [
       {
-        "label": "제품명",
-        "value": "웍메이트",
+        "label": "속도 조절 / 메모리",
+        "value": "다이얼로 웍질 속도를 조절하고, 자주 사용하는 속도를 3개까지 저장합니다.",
         "placeholder": false
       },
       {
-        "label": "모델 / 크기",
-        "value": "모델별 상세 정보 확인 예정",
-        "placeholder": true
+        "label": "인터벌 기능",
+        "value": "웍질과 멈춤(홀딩)을 반복하도록 설정합니다. 메뉴와 레시피에 맞춰 동작 시간과 멈춤 시간을 조절할 수 있습니다.",
+        "placeholder": false
       },
       {
-        "label": "1회 조리량 / 조리시간",
-        "value": "모델별 상세 정보 확인 예정",
-        "placeholder": true
+        "label": "디지털 조작부",
+        "value": "웍질 속도·조리시간·작동 상태를 표시합니다. 다이얼을 눌러 동작을 시작하거나 멈춥니다.",
+        "placeholder": false
       },
       {
-        "label": "전원 / 열원",
-        "value": "모델별 상세 정보 확인 예정",
-        "placeholder": true
+        "label": "전용 웍 / 탈부착",
+        "value": "2중 잠금장치에 맞는 쿡메이트 전용 웍을 사용합니다. 화구 청소 또는 화구 단독 사용 시 자동웍을 탈부착할 수 있습니다.",
+        "placeholder": false
       },
       {
-        "label": "지원 기능 / 조절 범위",
-        "value": "모델별 상세 정보 확인 예정",
-        "placeholder": true
+        "label": "450 장착용 직화렌지",
+        "value": "CMR500: 500 × 700 × 800 mm\nLNG 18,920 kcal/h (22 kW) · 220 V, 50/60 Hz, 40 W\n위 수치는 직화렌지 사양이며 웍메이트 본체 사양과 구분됩니다.",
+        "placeholder": false
       },
       {
-        "label": "세척 방법 / 설치 조건",
-        "value": "모델별 상세 정보 확인 예정",
-        "placeholder": true
+        "label": "600 설치 시 확인",
+        "value": "화구 중심에 맞춰 흔들리지 않도록 고정하고, 화구와의 거리·웍 고정링의 각도·높이를 조절합니다. 기존 화구의 규격과 상판 상태를 먼저 확인해 주세요.",
+        "placeholder": false
+      },
+      {
+        "label": "조리량 안내",
+        "value": "권장 인분은 메뉴와 재료에 따라 달라집니다. 600 매뉴얼의 짜장 조리 예시는 식재료 약 3 kg(약 15인분) 기준이며, 모든 메뉴의 최대 용량을 뜻하지 않습니다.",
+        "placeholder": false
       }
     ]
   },

@@ -14,3 +14,6 @@
 
 /* 웍메이트: 기존 그릴메이트의 구조와 반응형 규칙을 유지합니다. */
 :root{--ink:#252720;--muted:#60635a;--soft:#f5f4ef;--line:#dfdfd5;--dark:#20291f;--accent:#a44420}.brand small,.media-heading small,.badge{font-size:.875rem}.hero{background:#fcfbf7}.button:hover{background:#843418}.media-placeholder{background:#293426}.hero h1{overflow-wrap:anywhere}@media(max-width:380px){h1{font-size:2.1rem}.four{grid-template-columns:1fr}.button{padding:12px 14px;gap:10px}}
+
+/* 두 가지 웍메이트 모델 비교 */
+.model-figure{margin:0;padding:24px 24px 0;background:#fff}.model-visual{height:300px;display:flex;align-items:center;justify-content:center}.model-visual .model-photo-crop{margin:0;max-width:100%;height:100%;width:auto}.model-figure figcaption{text-align:center;font-size:.875rem;color:var(--muted);padding:14px 0;border-bottom:1px solid var(--line)}.model-description{margin-top:8px;color:var(--accent);font-weight:600}.model-note{margin-top:22px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted)}.model-card dl>div{display:grid;grid-template-columns:145px 1fr;gap:16px}.model-card dd{margin:0}@media(max-width:700px){.model-visual{height:260px}.model-card dl>div{grid-template-columns:110px 1fr;gap:12px}}
