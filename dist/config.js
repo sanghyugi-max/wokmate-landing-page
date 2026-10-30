@@ -12,7 +12,7 @@ window.COOKMATE_CONFIG = {
     "copyright": "© COOKMATE. All rights reserved."
   },
   "draft": {
-    "show": true,
+    "show": false,
     "text": "웍메이트 제작 시안"
   },
   "navigation": [
