@@ -13,7 +13,7 @@ window.COOKMATE_CONFIG = {
   },
   "draft": {
     "show": true,
-    "text": "웍메이트 제작 시안 · 실제 사용 사례 준비 중"
+    "text": "웍메이트 제작 시안"
   },
   "navigation": [
     {
@@ -147,23 +147,59 @@ window.COOKMATE_CONFIG = {
   "cases": {
     "eyebrow": "04 / 실제 사용 사례",
     "title": "우리 매장과 닮은 사례를\n확인해 보세요.",
-    "intro": "웍메이트의 실제 설치 사례와 사용 후기를 준비하고 있습니다.",
+    "intro": "실제 매장에 설치된 웍메이트를 사진으로 확인하세요.",
     "items": [
       {
         "category": "설치 사례",
-        "title": "웍메이트가 함께하는 주방",
-        "text": "실제 설치 환경과 매장에서의 활용 사례를 준비 중입니다.",
-        "image": "",
-        "alt": "웍메이트 설치 매장",
-        "placeholder": true
-      },
-      {
-        "category": "사용 경험",
-        "title": "현장에서 전하는 볶음 조리 이야기",
-        "text": "사용 메뉴와 운영 경험을 담은 실제 후기를 준비 중입니다.",
-        "image": "",
-        "alt": "웍메이트 사용 사례",
-        "placeholder": true
+        "title": "현장에서 만나는 웍메이트",
+        "text": "다양한 주방 환경에 설치된 웍메이트의 모습을 확인하세요.",
+        "placeholder": false,
+        "images": [
+          {
+            "src": "assets/installations/installation-01.jpg",
+            "alt": "웍메이트 실제 매장 설치 사진 1"
+          },
+          {
+            "src": "assets/installations/installation-02.jpg",
+            "alt": "웍메이트 실제 매장 설치 사진 2"
+          },
+          {
+            "src": "assets/installations/installation-03.jpg",
+            "alt": "웍메이트 실제 매장 설치 사진 3"
+          },
+          {
+            "src": "assets/installations/installation-04.jpg",
+            "alt": "웍메이트 실제 매장 설치 사진 4"
+          },
+          {
+            "src": "assets/installations/installation-05.jpg",
+            "alt": "웍메이트 실제 매장 설치 사진 5"
+          },
+          {
+            "src": "assets/installations/installation-06.jpg",
+            "alt": "웍메이트 실제 매장 설치 사진 6"
+          },
+          {
+            "src": "assets/installations/installation-07.jpg",
+            "alt": "웍메이트 실제 매장 설치 사진 7"
+          },
+          {
+            "src": "assets/installations/installation-08.jpg",
+            "alt": "웍메이트 실제 매장 설치 사진 8"
+          },
+          {
+            "src": "assets/installations/installation-09.jpg",
+            "alt": "웍메이트 실제 매장 설치 사진 9"
+          },
+          {
+            "src": "assets/installations/installation-10.jpg",
+            "alt": "웍메이트 실제 매장 설치 사진 10"
+          },
+          {
+            "src": "assets/installations/installation-11.jpg",
+            "alt": "웍메이트 실제 매장 설치 사진 11"
+          }
+        ]
       }
     ]
   },
@@ -224,21 +260,14 @@ window.COOKMATE_CONFIG = {
         "wok": "지름 30 cm · 깊이 15 cm",
         "power": "220 V, 50/60 Hz, 60 W",
         "installation": "쿡메이트 직화렌지(CMR500)에 장착",
-        "gas": "해당 없음 · 조리 열원은 장착 화구 사용",
+        "gas": "쿡메이트 직화렌지 · 도시가스 기준 18,920 kcal/h",
         "note": "제육·쭈꾸미·낙지·곱창볶음 등 한식 볶음과 베트남·태국요리, 퓨전 중식에 활용합니다."
       },
       {
         "name": "웍메이트 600",
         "code": "WOK600",
-        "image": "assets/wokmate-600-source.png",
-        "photoCrop": {
-          "x": 35,
-          "y": 310,
-          "width": 477,
-          "height": 352,
-          "sourceWidth": 1500
-        },
-        "alt": "기존 중식 화구에 장착한 웍메이트 600",
+        "image": "assets/wokmate-600-installation-portrait.jpg",
+        "alt": "기존 중식 화구에 장착한 웍메이트 600으로 실제 조리하는 모습",
         "caption": "기존 중식 화구 장착 모습",
         "description": "중식 전용, 한 번에 넉넉한 조리에",
         "capacity": "약 10~15인분",
@@ -247,7 +276,8 @@ window.COOKMATE_CONFIG = {
         "power": "220 V, 50/60 Hz, 60 W",
         "installation": "기존 중식 전용 화구에 장착",
         "gas": "해당 없음 · 조리 열원은 장착 화구 사용",
-        "note": "대부분의 중식 화구에 장착할 수 있습니다. 기존 화구의 규격과 구조에 따라 설치 방법 또는 추가 부품이 달라질 수 있습니다."
+        "note": "대부분의 중식 화구에 장착할 수 있습니다. 기존 화구의 규격과 구조에 따라 설치 방법 또는 추가 부품이 달라질 수 있습니다.",
+        "photoLayout": "portrait"
       }
     ],
     "rows": [
@@ -314,7 +344,7 @@ window.COOKMATE_CONFIG = {
       },
       {
         "question": "배송과 A/S 조건은 어떻게 되나요?",
-        "answer": "납품 지역과 선택 모델에 따른 배송·설치 범위 및 보증 조건을 상담 시 확인해 주세요.",
+        "answer": "전국 무료 배송·설치를 제공합니다. (일부 도서지역은 추가 비용이 발생할 수 있습니다.)\n구매일로부터 1년간 무상보증합니다.\n해외 사용은 카카오톡 상담 또는 전화로 문의해 주시면 안내해 드리겠습니다.",
         "placeholder": false
       }
     ]

@@ -28,7 +28,7 @@
   const modelPhoto = m => {
     const url = safeURL(m.image,true); if (!url) return '';
     const crop = m.photoCrop;
-    if (!crop) return `<img class="model-photo" src="${e(url)}" alt="${e(m.alt)}" loading="lazy">`;
+    if (!crop) return `<img class="model-photo${m.photoLayout === 'portrait' ? ' installation-photo' : ''}" src="${e(url)}" alt="${e(m.alt)}" loading="lazy">`;
     const {x,y,width,height,sourceWidth} = crop;
     if (![x,y,width,height,sourceWidth].every(Number.isFinite) || width <= 0 || height <= 0) return '';
     return `<div class="model-photo-crop" style="aspect-ratio:${width}/${height}"><img src="${e(url)}" alt="${e(m.alt)}" loading="lazy" style="width:${sourceWidth/width*100}%;left:${-x/width*100}%;top:${-y/height*100}%"></div>`;
@@ -53,7 +53,7 @@ function modelCards(){return c.specs.models?.length ? '<div class="grid two mode
     ${section('problem', c.problem, `<div class="grid three">${c.problem.items.map((x,i) => `<article class="card"><span class="ordinal">0${i+1}</span><h3>${e(x.title)}</h3><p>${e(x.text)}</p></article>`).join('')}</div>`, true)}
     ${section('how', c.how, `<div class="grid four">${c.how.items.map((x,i) => `<article class="step"><span class="ordinal">${String(i+1).padStart(2,'0')} / ${e(c.labels.number)}</span><h3>${e(x.title)}</h3><p>${e(x.text)}</p>${x.image ? `<img class="step-media" src="${e(x.image)}" alt="${e(x.title)} 작동 영상" loading="lazy">` : ''}</article>`).join('')}</div>`)}
     ${section('benefits', c.benefits, `<div class="grid two">${c.benefits.items.map((x,i) => `<article class="benefit"><h3><span aria-hidden="true">${String(i+1).padStart(2,'0')}</span>${e(x.title)}</h3><p>${e(x.text)}</p></article>`).join('')}</div>`, true)}
-    ${section('cases', c.cases, `<div class="grid two">${c.cases.items.map(x => `<article class="case"><div class="case-image">${safeURL(x.image,true) ? `<img src="${e(safeURL(x.image,true))}" alt="${e(x.alt)}" loading="lazy">` : e(c.labels.image)}</div><div class="case-body"><span class="case-kind">${e(x.category)}</span><h3>${e(x.title)}</h3><p>${e(x.text)}</p>${x.placeholder ? badge() : ''}</div></article>`).join('')}</div>`)}
+    ${section('cases', c.cases, c.cases.items.map(x => `<article class="case installation-case"><div class="installation-gallery" role="region" aria-roledescription="캐러셀" aria-label="웍메이트 설치 사례"><div class="installation-slides">${x.images.map((photo,i) => `<img class="installation-slide${i === 0 ? ' is-active' : ''}" src="${e(safeURL(photo.src,true))}" alt="${e(photo.alt)}" width="1024" height="1024" ${i ? 'loading="lazy" aria-hidden="true"' : 'fetchpriority="low"'}>`).join('')}</div><div class="gallery-controls"><button type="button" data-gallery="prev" aria-label="이전 설치 사진">←</button><span class="gallery-count" aria-live="off">1 / ${x.images.length}</span><button type="button" data-gallery="next" aria-label="다음 설치 사진">→</button><button type="button" data-gallery="pause" aria-label="자동 슬라이드 일시정지">일시정지</button></div></div><div class="case-body"><span class="case-kind">${e(x.category)}</span><h3>${e(x.title)}</h3><p>${e(x.text)}</p></div></article>`).join(''))}
     ${section('comparison', c.comparison, `<div class="table-wrap"><table class="compare"><thead><tr><th scope="col">${e(c.comparison.before)}</th><th scope="col">${e(c.comparison.after)}</th></tr></thead><tbody>${c.comparison.rows.map(r => `<tr><td>${e(r[0])}</td><td>${e(r[1])}</td></tr>`).join('')}</tbody></table></div>`, true)}
     ${section('specs', c.specs, `${modelCards()}<div class="table-wrap"><table class="specs"><tbody>${c.specs.rows.map(r => `<tr><th scope="row">${e(r.label)}</th><td>${r.placeholder ? badge() : ''}<span>${e(r.value)}</span></td></tr>`).join('')}</tbody></table></div>`)}
     ${section('faq', c.faq, c.faq.items.map(x => `<details><summary>${e(x.question)}</summary><p>${e(x.answer)}</p>${x.placeholder ? badge() : ''}</details>`).join(''))}
@@ -106,4 +106,36 @@ function modelCards(){return c.specs.models?.length ? '<div class="grid two mode
     slot.appendChild(video);
   } else videoPlaceholder(c.video.error);
   document.querySelectorAll('.case-image img').forEach(img => img.addEventListener('error', () => { img.parentElement.textContent = c.labels.image; }));
+  document.querySelectorAll('.installation-gallery').forEach(gallery => {
+    const slides = [...gallery.querySelectorAll('.installation-slide')];
+    const counter = gallery.querySelector('.gallery-count');
+    const pauseButton = gallery.querySelector('[data-gallery="pause"]');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let index = 0, paused = reducedMotion.matches, timer;
+    const show = next => {
+      index = (next + slides.length) % slides.length;
+      slides.forEach((slide,i) => {
+        slide.classList.toggle('is-active', i === index);
+        slide.setAttribute('aria-hidden', String(i !== index));
+        if (i === index) slide.loading = 'eager';
+      });
+      counter.textContent = `${index + 1} / ${slides.length}`;
+    };
+    const sync = () => {
+      clearInterval(timer);
+      pauseButton.textContent = paused ? '자동 재생' : '일시정지';
+      pauseButton.setAttribute('aria-label', paused ? '자동 슬라이드 재생' : '자동 슬라이드 일시정지');
+      if (!paused && !document.hidden) timer = setInterval(() => show(index + 1), 4500);
+    };
+    gallery.querySelector('[data-gallery="prev"]').addEventListener('click', () => { show(index - 1); sync(); });
+    gallery.querySelector('[data-gallery="next"]').addEventListener('click', () => { show(index + 1); sync(); });
+    pauseButton.addEventListener('click', () => { paused = !paused; sync(); });
+    gallery.addEventListener('mouseenter', () => clearInterval(timer));
+    gallery.addEventListener('mouseleave', sync);
+    gallery.addEventListener('focusin', () => clearInterval(timer));
+    gallery.addEventListener('focusout', event => { if (!gallery.contains(event.relatedTarget)) sync(); });
+    document.addEventListener('visibilitychange', sync);
+    reducedMotion.addEventListener('change', event => { paused = event.matches; sync(); });
+    sync();
+  });
 })();

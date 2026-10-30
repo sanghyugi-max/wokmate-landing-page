@@ -17,3 +17,18 @@
 
 /* 두 가지 웍메이트 모델 비교 */
 .model-figure{margin:0;padding:24px 24px 0;background:#fff}.model-visual{height:300px;display:flex;align-items:center;justify-content:center}.model-visual .model-photo-crop{margin:0;max-width:100%;height:100%;width:auto}.model-figure figcaption{text-align:center;font-size:.875rem;color:var(--muted);padding:14px 0;border-bottom:1px solid var(--line)}.model-description{margin-top:8px;color:var(--accent);font-weight:600}.model-note{margin-top:22px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted)}.model-card dl>div{display:grid;grid-template-columns:145px 1fr;gap:16px}.model-card dd{margin:0}@media(max-width:700px){.model-visual{height:260px}.model-card dl>div{grid-template-columns:110px 1fr;gap:12px}}
+
+/* 실제 설치 사진: 정사각형 슬라이드 */
+.installation-case{max-width:760px;margin-inline:auto;background:#fff}
+.installation-gallery{position:relative;background:#e8ece8}
+.installation-slides{position:relative;aspect-ratio:1;overflow:hidden}
+.installation-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;visibility:hidden;transition:opacity .6s ease}
+.installation-slide.is-active{opacity:1;visibility:visible}
+.gallery-controls{display:flex;align-items:center;justify-content:center;gap:14px;padding:14px;background:var(--dark);color:#fff}
+.gallery-controls button{border:1px solid #7f9085;border-radius:4px;background:transparent;color:inherit;min-width:44px;min-height:44px;cursor:pointer;padding:6px 12px}
+.gallery-controls button:hover{background:#304137}.gallery-count{font-variant-numeric:tabular-nums;min-width:58px;text-align:center}
+@media(prefers-reduced-motion:reduce){.installation-slide{transition:none}}
+
+/* 웍메이트 600 설치 사진을 카드 폭에 맞춘 3:4 세로 사진으로 표시 */
+.model-visual:has(.installation-photo){height:auto;aspect-ratio:3/4;width:100%;overflow:hidden;border-radius:4px}
+.model-visual .installation-photo{width:100%;height:100%;padding:0;object-fit:cover;object-position:center}
